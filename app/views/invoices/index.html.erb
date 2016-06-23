@@ -1,0 +1,6 @@
+<% @invoices.each do |invoice| %>
+	<div class="col-md-4">
+		<h2><%= invoice.id %></h2>
+		<%= link_to "View Invoice", user_invoice_path(current_user, invoice), class: "btn-custom" %>
+	</div>
+<% end %>

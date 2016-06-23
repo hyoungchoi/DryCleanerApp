@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subtotal: 9.99
+  total: 9.99
+  pickup: 2016-06-22 16:56:41
+
+two:
+  subtotal: 9.99
+  total: 9.99
+  pickup: 2016-06-22 16:56:41
