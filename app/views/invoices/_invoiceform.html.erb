@@ -18,4 +18,31 @@
     </div>
   </div>
   <%= link_to "Add Item", new_user_invoice_item_path(current_user, @invoice), class: "btn btn-success" %>
+<% else %>
+  <div class="text-center">
+    <div class="col-md-2 col-md-offset-5">
+        <div class="field form-group">
+          <h4>Pickup Time</h4>
+          <%= @invoice.pickup %>
+        </div>
+        <div class="field form-group">
+          <h4>Subtotal</h4>
+          <div class="left-right">
+            <h4>$</h4>
+          </div>
+          <div class="left-right">
+            <%= @invoice.subtotal %>
+          </div>
+        </div>
+        <div class="field form-group">
+          <h4>Total</h4>
+          <div class="left-right">
+            <h4>$</h4>
+          </div>
+          <div class="left-right">
+            <%= @invoice.total %>
+          </div>
+        </div>
+    </div>
+  </div>
 <% end %>

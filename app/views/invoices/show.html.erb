@@ -1,7 +1,3 @@
-<%= render "invoiceform" %>
-
-<div class="col-md-8 col-md-offset-2">
-	<h1>Subtotal</h1>
-	<h2><%= @invoice.subtotal %></h2>
-</div>
-	
+<% if user_signed_in? %>
+	<%= render "invoiceform" %>
+<% end %>

@@ -1,5 +1,6 @@
+<h1 class = "text-center">Invoices</h1>
 <% @invoices.each do |invoice| %>
-	<div class="col-md-4">
-		<%= link_to invoice.id, user_invoice_path(current_user, invoice), class: "btn btn-success" %>
+	<div class="text-center">
+		<%= link_to invoice.id, user_invoice_path(current_user, invoice) %>
 	</div>
 <% end %>
