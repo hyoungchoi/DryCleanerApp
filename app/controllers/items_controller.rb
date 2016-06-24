@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :find_invoice, only: [:create, :edit, :update, :destroy]
+  before_action :find_invoice, only: [:new, :create, :edit, :update, :destroy]
 	before_action :find_item, only: [:edit, :update, :destroy]
+	
+	def new
+		@item = @invoice.items.build
+	end
 
 	def create
 		@item = @invoice.items.create(item_params)

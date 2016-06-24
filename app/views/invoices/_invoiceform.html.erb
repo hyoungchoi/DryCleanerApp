@@ -1,0 +1,21 @@
+<% if current_user.type == "Drycleaner" %>
+  <div class="text-center">
+    <div class="col-md-2 col-md-offset-5">
+      <%= simple_form_for ([current_user, @invoice]) do |f| %>
+        <div class="field form-group">
+          <%= f.input :pickup %>
+        </div>
+        <div class="field form-group">
+          <%= f.input :subtotal %>
+        </div>
+        <div class="field form-group">
+          <%= f.input :total %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "Add Item", new_user_invoice_item_path(current_user, @invoice), class: "btn btn-success" %>
+<% end %>

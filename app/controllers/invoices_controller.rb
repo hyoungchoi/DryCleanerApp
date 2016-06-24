@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
-  before_action :find_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :find_invoice, except: [:index, :new, :create]
 
 	def index
 		@invoices = current_user.invoices.order("created_at DESC")
@@ -26,7 +27,7 @@ class InvoicesController < ApplicationController
 
 	def update
 		if @invoice.update(invoice_params)
-			redirect_to invoice_path
+			redirect_to drycleaner_invoice_path
 		else
 			render 'edit'
 		end
@@ -39,7 +40,7 @@ class InvoicesController < ApplicationController
 
 	private
 		def invoice_params
-			params.require(:invoice).permit(:title, :description)
+			params.require(:invoice).permit(:pickup, :subtotal, :total)
 		end
 
 		def find_invoice
