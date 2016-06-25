@@ -1,6 +1,9 @@
 <h1 class = "text-center">Invoices</h1>
 <% @invoices.each do |invoice| %>
 	<div class="text-center">
-		<%= link_to invoice.id, user_invoice_path(current_user, invoice) %>
+		<% if current_user.type == "Drycleaner" %>
+			<%= link_to 'Delete', user_invoice_path(current_user, invoice), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+		<% end %>
+		<%= link_to invoice.name, user_invoice_path(current_user, invoice) %>
 	</div>
 <% end %>

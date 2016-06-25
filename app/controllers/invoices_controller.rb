@@ -35,15 +35,23 @@ class InvoicesController < ApplicationController
 
 	def destroy
 		@invoice.destroy
-		redirect_to root_path
+		redirect_to drycleaner_invoices_path(current_user)
 	end
 
 	private
+
 		def invoice_params
-			params.require(:invoice).permit(:pickup, :subtotal, :total)
+			params.require(:invoice).permit(:name, :pickup, :subtotal, :total)
 		end
 
 		def find_invoice
 			@invoice = current_user.invoices.find(params[:id])
+			@customer = Customer.find_by_id(@invoice.customer_id)
+			
+			if @customer
+				@customer_email = @customer.email
+			end
+
 		end
+
 end
