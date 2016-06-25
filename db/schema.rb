@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625144140) do
+ActiveRecord::Schema.define(version: 20160625204936) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(version: 20160625144140) do
     t.decimal  "subtotal"
     t.decimal  "total"
     t.datetime "pickup"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "customer_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "drycleaner_id"
     t.string   "name"
+    t.string   "customer_email"
+    t.string   "drycleaner_email"
+    t.integer  "customer_id"
   end
 
   create_table "items", force: :cascade do |t|

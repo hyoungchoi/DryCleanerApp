@@ -4,19 +4,25 @@ class InvoicesController < ApplicationController
 
 	def index
 		@invoices = current_user.invoices.order("created_at DESC")
+		#if current_user.type == "Drycleaner"
+		#	@invoices = Invoice.where(drycleaner_email: current_user.email).order("created_at DESC")
+		#else
+		#	@invoices = Invoice.where(customer_email: current_user.email).order("created_at DESC")
+		#end
 	end
 
 	def show
 	end
 
 	def new
-		@invoice = Invoice.new
+		@invoice = current_user.invoices.build
 	end
 
 	def create
 		@invoice = current_user.invoices.build(invoice_params)
+		@invoice.customer_id = Customer.where(email: @invoice.customer_email).first.id
 		if @invoice.save
-			redirect_to root_path
+			redirect_to drycleaner_invoices_path(current_user)
 		else
 			render 'new'
 		end
@@ -41,17 +47,11 @@ class InvoicesController < ApplicationController
 	private
 
 		def invoice_params
-			params.require(:invoice).permit(:name, :pickup, :subtotal, :total)
+			params.require(:invoice).permit(:name, :customer_email, :pickup)
 		end
 
 		def find_invoice
 			@invoice = current_user.invoices.find(params[:id])
-			@customer = Customer.find_by_id(@invoice.customer_id)
-			
-			if @customer
-				@customer_email = @customer.email
-			end
-
 		end
 
 end

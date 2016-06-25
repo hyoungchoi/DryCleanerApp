@@ -1,17 +1,10 @@
 <% if current_user.type == "Drycleaner" %>
   <div class="text-center">
-    <div class="col-md-4 col-md-offset-4">
-      <h1><%= @customer_email %></h1>
-    </div>
-    <% unless @customer %>
-      <div class="col-md-4 col-md-offset-4">
-        <%= link_to "Add Customer", new_user_invoice_item_path(current_user, @invoice), class: "btn btn-default" %>
-      </div>
-    <% end %>
-    <div class="col-md-4 col-md-offset-4">
-      <%= link_to "Add Item", new_user_invoice_item_path(current_user, @invoice), class: "btn btn-success" %>
-    </div>
+
     <%= simple_form_for ([current_user, @invoice]) do |f| %>
+      <div class="col-md-2 col-md-offset-5">
+        <%= f.input :customer_email %>
+      </div>
       <div class="col-md-2 col-md-offset-5">
         <%= f.input :name %>
       </div>

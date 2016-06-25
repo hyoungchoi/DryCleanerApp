@@ -13,11 +13,6 @@
 				<div class="navbar-header">
 					<%= link_to "Invoices", user_invoices_path(current_user), class: "navbar-brand" %>
 				</div>
-				<% if current_user.type == "Drycleaner" %>
-					<ul class="nav navbar-nav">
-						<li><%= link_to "New Invoice", new_user_invoice_path(current_user) %></li>
-					</ul>
-				<% end %>
 				<ul class="nav navbar-nav navbar-right">
 					<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 				</ul>
