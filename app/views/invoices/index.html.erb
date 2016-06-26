@@ -1,17 +1,15 @@
-<div class="text-center">
-	<h1>Invoices</h1>
-	<% @invoices.each do |invoice| %>
-		<div class="col-md-4 col-md-offset-4">
-			<% if current_user.type == "Drycleaner" %>
-				<%= link_to 'Delete', user_invoice_path(current_user, invoice), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-			<% end %>
-				<%= link_to invoice.name, user_invoice_path(current_user, invoice) %>
-		</div>
-	<% end %>
-
+<h1>Invoices</h1>
+<% @invoices.each do |invoice| %>
 	<div class="col-md-4 col-md-offset-4">
 		<% if current_user.type == "Drycleaner" %>
-			<%= link_to "New Invoice", new_user_invoice_path(current_user), class: 'btn btn-default' %>
+			<%= link_to "Delete", user_invoice_path(current_user, invoice), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 		<% end %>
+		<%= link_to invoice.name, user_invoice_path(current_user, invoice) %>
 	</div>
+<% end %>
+
+<div class="col-md-4 col-md-offset-4">
+	<% if current_user.type == "Drycleaner" %>
+		<%= link_to "New Invoice", new_user_invoice_path(current_user), class: 'btn btn-default' %>
+	<% end %>
 </div>

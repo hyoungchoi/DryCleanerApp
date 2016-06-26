@@ -4,14 +4,10 @@ class InvoicesController < ApplicationController
 
 	def index
 		@invoices = current_user.invoices.order("created_at DESC")
-		#if current_user.type == "Drycleaner"
-		#	@invoices = Invoice.where(drycleaner_email: current_user.email).order("created_at DESC")
-		#else
-		#	@invoices = Invoice.where(customer_email: current_user.email).order("created_at DESC")
-		#end
 	end
 
 	def show
+		@items = @invoice.items
 	end
 
 	def new
@@ -20,6 +16,7 @@ class InvoicesController < ApplicationController
 
 	def create
 		@invoice = current_user.invoices.build(invoice_params)
+		@invoice.drycleaner_email = current_user.email
 		@invoice.customer_id = Customer.where(email: @invoice.customer_email).first.id
 		if @invoice.save
 			redirect_to drycleaner_invoices_path(current_user)
@@ -33,7 +30,7 @@ class InvoicesController < ApplicationController
 
 	def update
 		if @invoice.update(invoice_params)
-			redirect_to drycleaner_invoice_path
+			redirect_to drycleaner_invoices_path(current_user)
 		else
 			render 'edit'
 		end

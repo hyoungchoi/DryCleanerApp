@@ -1,3 +1,25 @@
 // Place all the styles related to the invoices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#footer
+{
+    padding: 5px;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 0;
+    position: fixed;
+    left: 0px;
+    bottom: 0;
+}
+
+#footer2
+{
+    padding: 5px;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 0;
+    position: fixed;
+    left: 170px;
+    bottom: 0;
+}

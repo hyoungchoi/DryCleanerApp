@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :find_invoice, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_invoice
 	before_action :find_item, only: [:edit, :update, :destroy]
 	
 	def new
@@ -8,10 +8,10 @@ class ItemsController < ApplicationController
 
 	def create
 		@item = @invoice.items.create(item_params)
-		@item.user_id = current_user.id
+		@item.invoice_id = @invoice.id
 
 		if @item.save
-			redirect_to invoice_path(@invoice)
+			redirect_to drycleaner_invoice_path(current_user, @invoice)
 		else
 			render 'new'
 		end
