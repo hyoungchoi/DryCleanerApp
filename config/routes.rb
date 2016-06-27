@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :customers, :drycleaners
   
-  resources :users, :customers, :drycleaners do
-    resources :invoices do
-      resources :items
-    end
+  resources :invoices do
+    resources :items
   end
+
   devise_scope :user do
     authenticated :user do
       root 'invoices#index', as: :authenticated_root

@@ -1,12 +1,8 @@
 <div class="col-md-2 col-md-offset-5">
-  <%= simple_form_for ([current_user, @invoice, @item]) do |f| %>
+  <%= simple_form_for ([@invoice, @invoice.items.build]) do |f| %>
     <div class="field form-group">
       <%= f.input :description %>
-    </div>
-    <div class="field form-group">
       <%= f.input :quantity %>
-    </div>
-    <div class="field form-group">
       <%= f.input :amount %>
     </div>
     <div class="form-actions">

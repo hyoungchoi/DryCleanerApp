@@ -1,0 +1,64 @@
+Prefix Verb   URI Pattern                                    Controller#Action
+              new_user_session GET    /users/sign_in(.:format)                       devise/sessions#new
+                  user_session POST   /users/sign_in(.:format)                       devise/sessions#create
+          destroy_user_session DELETE /users/sign_out(.:format)                      devise/sessions#destroy
+                 user_password POST   /users/password(.:format)                      devise/passwords#create
+             new_user_password GET    /users/password/new(.:format)                  devise/passwords#new
+            edit_user_password GET    /users/password/edit(.:format)                 devise/passwords#edit
+                               PATCH  /users/password(.:format)                      devise/passwords#update
+                               PUT    /users/password(.:format)                      devise/passwords#update
+      cancel_user_registration GET    /users/cancel(.:format)                        devise/registrations#cancel
+             user_registration POST   /users(.:format)                               devise/registrations#create
+         new_user_registration GET    /users/sign_up(.:format)                       devise/registrations#new
+        edit_user_registration GET    /users/edit(.:format)                          devise/registrations#edit
+                               PATCH  /users(.:format)                               devise/registrations#update
+                               PUT    /users(.:format)                               devise/registrations#update
+                               DELETE /users(.:format)                               devise/registrations#destroy
+          new_customer_session GET    /customers/sign_in(.:format)                   devise/sessions#new
+              customer_session POST   /customers/sign_in(.:format)                   devise/sessions#create
+      destroy_customer_session DELETE /customers/sign_out(.:format)                  devise/sessions#destroy
+             customer_password POST   /customers/password(.:format)                  devise/passwords#create
+         new_customer_password GET    /customers/password/new(.:format)              devise/passwords#new
+        edit_customer_password GET    /customers/password/edit(.:format)             devise/passwords#edit
+                               PATCH  /customers/password(.:format)                  devise/passwords#update
+                               PUT    /customers/password(.:format)                  devise/passwords#update
+  cancel_customer_registration GET    /customers/cancel(.:format)                    devise/registrations#cancel
+         customer_registration POST   /customers(.:format)                           devise/registrations#create
+     new_customer_registration GET    /customers/sign_up(.:format)                   devise/registrations#new
+    edit_customer_registration GET    /customers/edit(.:format)                      devise/registrations#edit
+                               PATCH  /customers(.:format)                           devise/registrations#update
+                               PUT    /customers(.:format)                           devise/registrations#update
+                               DELETE /customers(.:format)                           devise/registrations#destroy
+        new_drycleaner_session GET    /drycleaners/sign_in(.:format)                 devise/sessions#new
+            drycleaner_session POST   /drycleaners/sign_in(.:format)                 devise/sessions#create
+    destroy_drycleaner_session DELETE /drycleaners/sign_out(.:format)                devise/sessions#destroy
+           drycleaner_password POST   /drycleaners/password(.:format)                devise/passwords#create
+       new_drycleaner_password GET    /drycleaners/password/new(.:format)            devise/passwords#new
+      edit_drycleaner_password GET    /drycleaners/password/edit(.:format)           devise/passwords#edit
+                               PATCH  /drycleaners/password(.:format)                devise/passwords#update
+                               PUT    /drycleaners/password(.:format)                devise/passwords#update
+cancel_drycleaner_registration GET    /drycleaners/cancel(.:format)                  devise/registrations#cancel
+       drycleaner_registration POST   /drycleaners(.:format)                         devise/registrations#create
+   new_drycleaner_registration GET    /drycleaners/sign_up(.:format)                 devise/registrations#new
+  edit_drycleaner_registration GET    /drycleaners/edit(.:format)                    devise/registrations#edit
+                               PATCH  /drycleaners(.:format)                         devise/registrations#update
+                               PUT    /drycleaners(.:format)                         devise/registrations#update
+                               DELETE /drycleaners(.:format)                         devise/registrations#destroy
+                 invoice_items GET    /invoices/:invoice_id/items(.:format)          items#index
+                               POST   /invoices/:invoice_id/items(.:format)          items#create
+              new_invoice_item GET    /invoices/:invoice_id/items/new(.:format)      items#new
+             edit_invoice_item GET    /invoices/:invoice_id/items/:id/edit(.:format) items#edit
+                  invoice_item GET    /invoices/:invoice_id/items/:id(.:format)      items#show
+                               PATCH  /invoices/:invoice_id/items/:id(.:format)      items#update
+                               PUT    /invoices/:invoice_id/items/:id(.:format)      items#update
+                               DELETE /invoices/:invoice_id/items/:id(.:format)      items#destroy
+                      invoices GET    /invoices(.:format)                            invoices#index
+                               POST   /invoices(.:format)                            invoices#create
+                   new_invoice GET    /invoices/new(.:format)                        invoices#new
+                  edit_invoice GET    /invoices/:id/edit(.:format)                   invoices#edit
+                       invoice GET    /invoices/:id(.:format)                        invoices#show
+                               PATCH  /invoices/:id(.:format)                        invoices#update
+                               PUT    /invoices/:id(.:format)                        invoices#update
+                               DELETE /invoices/:id(.:format)                        invoices#destroy
+            authenticated_root GET    /                                              invoices#index
+          unauthenticated_root GET    /                                              devise/sessions#new

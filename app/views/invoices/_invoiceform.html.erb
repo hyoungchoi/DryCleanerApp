@@ -1,11 +1,11 @@
+<% @items.each do |item| %>
+  <h4><%= item.description %> $<%= item.quantity %> $<%= item.amount %></h4>
+<% end %>
 <% if current_user.type == "Drycleaner" %>
-	<% @items.each do |item| %>
-	  <h4><%= item.description %></h4>
-	  <h4><%= item.quantity %></h4>
-	  <h4><%= item.amount %></h4>
-	<% end %>
-	<%= link_to "Add Item", new_user_invoice_item_path(current_user, @invoice), class: 'btn btn-default' %>
-  <%= simple_form_for ([current_user, @invoice]) do |f| %>
+  <% if @invoice.id %>
+	  <%= link_to "Add Item", new_invoice_item_path(@invoice), class: 'btn btn-default' %>
+  <% end %>
+  <%= simple_form_for @invoice do |f| %>
     <div class="col-md-2 col-md-offset-5">
       <%= f.input :name %>
       <%= f.input :customer_email %>

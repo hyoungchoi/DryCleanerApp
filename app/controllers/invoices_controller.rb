@@ -3,7 +3,11 @@ class InvoicesController < ApplicationController
   before_action :find_invoice, except: [:index, :new, :create]
 
 	def index
-		@invoices = current_user.invoices.order("created_at DESC")
+		if current_user.type == "Customer"
+			@invoices = Invoice.where(customer_id: current_user).order("created_at DESC")
+		else
+			@invoices = Invoice.where(drycleaner_id: current_user).order("created_at DESC")
+		end
 	end
 
 	def show
@@ -12,6 +16,7 @@ class InvoicesController < ApplicationController
 
 	def new
 		@invoice = current_user.invoices.build
+		@items = @invoice.items
 	end
 
 	def create
@@ -19,7 +24,7 @@ class InvoicesController < ApplicationController
 		@invoice.drycleaner_email = current_user.email
 		@invoice.customer_id = Customer.where(email: @invoice.customer_email).first.id
 		if @invoice.save
-			redirect_to drycleaner_invoices_path(current_user)
+			redirect_to invoices_path
 		else
 			render 'new'
 		end
@@ -30,7 +35,7 @@ class InvoicesController < ApplicationController
 
 	def update
 		if @invoice.update(invoice_params)
-			redirect_to drycleaner_invoices_path(current_user)
+			redirect_to invoices_path
 		else
 			render 'edit'
 		end
@@ -38,7 +43,7 @@ class InvoicesController < ApplicationController
 
 	def destroy
 		@invoice.destroy
-		redirect_to drycleaner_invoices_path(current_user)
+		redirect_to invoices_path
 	end
 
 	private

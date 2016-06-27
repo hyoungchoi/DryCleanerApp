@@ -11,7 +11,7 @@
 		<div class="container">
 			<% if user_signed_in? %>
 				<div class="navbar-header">
-					<%= link_to "Invoices", user_invoices_path(current_user), class: "navbar-brand" %>
+					<%= link_to "Invoices", invoices_path, class: "navbar-brand" %>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
 					<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

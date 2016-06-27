@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 	before_action :find_item, only: [:edit, :update, :destroy]
 	
 	def new
-		@item = @invoice.items.build
+		@item = Item.new
 	end
 
 	def create
@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 		@item.invoice_id = @invoice.id
 
 		if @item.save
-			redirect_to drycleaner_invoice_path(current_user, @invoice)
+			redirect_to invoice_path(@invoice)
 		else
 			render 'new'
 		end
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 
 	def update
 		if @item.update(item_params)
-			redirect_to invoice_path(@invoice)
+			redirect_to drycleaner_invoice_path(current_user, @invoice)
 		else
 			render 'edit'
 		end
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
 	def destroy
 		@item.destroy
-		redirect_to invoice_path(@invoice)
+		redirect_to drycleaner_invoice_path(@invoice)
 	end
 	
 	private
