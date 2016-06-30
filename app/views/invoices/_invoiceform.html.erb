@@ -1,5 +1,5 @@
 <% @items.each do |item| %>
-  <h4><%= item.description %> $<%= item.quantity %> $<%= item.amount %></h4>
+  <h4><%= item.description %> <%= item.quantity %> $<%= item.amount %></h4>
 <% end %>
 <% if current_user.type == "Drycleaner" %>
   <% if @invoice.id %>

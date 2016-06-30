@@ -4,7 +4,7 @@
 		<% if current_user.type == "Drycleaner" %>
 			<%= link_to "Delete", invoice_path(invoice), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 		<% end %>
-		<%= link_to invoice.name, invoice_path(invoice) %>
+		<%= link_to "#{invoice.name} Pickup Time: #{invoice.pickup.strftime('%a, %d %b %Y %H:%M')}", invoice_path(invoice) %>
 	</div>
 <% end %>
 
